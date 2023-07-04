@@ -106,10 +106,8 @@ public class Properties_of_mid_sem_graph {
     private static void calculateShortestDistance(int shortestPathAlgorithmChoice) {
         Scanner scanner = new Scanner(System.in);
         if(shortestPathAlgorithmChoice == 1) {
-            BellmanFordSP sp1 = new BellmanFordSP(DG1,0);
-            BellmanFordSP sp2 = new BellmanFordSP(DG2,1);
-            BellmanFordSP sp3 = new BellmanFordSP(DG3,1);
-//            System.out.println("Properties of combined Distance is ->");
+            
+            System.out.println("Properties of combined Distance is ->");
             System.out.println("Choose Graph:");
             System.out.println("1.Graph_01");
             System.out.println("2.Graph_02");
@@ -122,6 +120,9 @@ public class Properties_of_mid_sem_graph {
                 System.out.println("Invalid vertex entered!!!");
                 return;
             }
+            BellmanFordSP sp1 = new BellmanFordSP(DG1,s);
+            BellmanFordSP sp2 = new BellmanFordSP(DG2,s);
+            BellmanFordSP sp3 = new BellmanFordSP(DG3,s);
             EdgeWeightedDigraph G = null;
             if(choice == 1){
                 G = DG1;
@@ -156,9 +157,6 @@ public class Properties_of_mid_sem_graph {
             System.out.println();
         }
         else {
-            DijkstraUndirectedSP sp1 = new DijkstraUndirectedSP(G1,0);
-            DijkstraUndirectedSP sd2 = new DijkstraUndirectedSP(G2,0);
-            DijkstraUndirectedSP sd3 = new DijkstraUndirectedSP(G3,0);
             System.out.println("Choose Graph:");
             System.out.println("1.Graph_01");
             System.out.println("2.Graph_02");
@@ -184,6 +182,9 @@ public class Properties_of_mid_sem_graph {
                 System.out.println("Invalid vertex entered!!!");
                 return;
             }
+            DijkstraUndirectedSP sp1 = new DijkstraUndirectedSP(G1,s);
+            DijkstraUndirectedSP sd2 = new DijkstraUndirectedSP(G2,s);
+            DijkstraUndirectedSP sd3 = new DijkstraUndirectedSP(G3,s);
             for (int t = 0; t < G.V(); t++) {
                 if (sp1.hasPathTo(t)) {
                     StdOut.printf("%d to %d (%.2f)  ", s, t, sp1.distTo(t));
