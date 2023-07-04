@@ -17,16 +17,18 @@ public class Properties_of_Facebook_Gemsec_Graph {
         G1 = new EdgeWeightedGraph(in1);
         G2 = new EdgeWeightedGraph(in2);
         G3 = new EdgeWeightedGraph(in3);
-        
+
     }
+
     public static void ReadEdgeWeightDigraph() {
-    In in1 = new In("src/Sub_Project_02/01_Government.txt");
-    In in2 = new In("src/Sub_Project_02/02_Politicians.txt");
-    In in3 = new In("src/Sub_Project_02/03_Public_figure.txt");
+        In in1 = new In("src/Sub_Project_02/01_Government.txt");
+        In in2 = new In("src/Sub_Project_02/02_Politicians.txt");
+        In in3 = new In("src/Sub_Project_02/03_Public_figure.txt");
         DG1 = new EdgeWeightedDigraph(in1);
         DG2 = new EdgeWeightedDigraph(in2);
         DG3 = new EdgeWeightedDigraph(in3);
     }
+
     private static void exitProgram() {
         System.out.println("Exiting program.....");
         System.exit(0);
@@ -69,6 +71,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
             } else if (operationChoice == 3) {
 
             } else if (operationChoice == 4) {
+                obj.close();
                 exitProgram();
             } else {
                 System.out.println("Invalid operation choice.");
@@ -117,9 +120,6 @@ public class Properties_of_Facebook_Gemsec_Graph {
     private static void calculateShortestDistance(int shortestPathAlgorithmChoice) {
         Scanner scanner = new Scanner(System.in);
         if (shortestPathAlgorithmChoice == 1) {
-            BellmanFordSP sp1 = new BellmanFordSP(DG1, 0);
-            BellmanFordSP sp2 = new BellmanFordSP(DG2, 1);
-            BellmanFordSP sp3 = new BellmanFordSP(DG3, 1);
             // System.out.println("Properties of combined Distance is ->");
             System.out.println("Choose Graph:");
             System.out.println("1.Government");
@@ -130,12 +130,13 @@ public class Properties_of_Facebook_Gemsec_Graph {
             graphCall(choice);
 
             int s = scanner.nextInt();
-
             if (!validateSourceVertex(choice, s)) {
                 System.out.println("Invalid vertex entered!!!");
                 return;
             }
-
+            BellmanFordSP sp1 = new BellmanFordSP(DG1, s);
+            BellmanFordSP sp2 = new BellmanFordSP(DG2, s);
+            BellmanFordSP sp3 = new BellmanFordSP(DG3, s);
             EdgeWeightedDigraph G = null;
             if (choice == 1) {
                 G = DG1;
@@ -168,9 +169,6 @@ public class Properties_of_Facebook_Gemsec_Graph {
             }
             System.out.println();
         } else {
-            DijkstraUndirectedSP sp1 = new DijkstraUndirectedSP(G1, 0);
-            DijkstraUndirectedSP sd2 = new DijkstraUndirectedSP(G2, 0);
-            DijkstraUndirectedSP sd3 = new DijkstraUndirectedSP(G3, 0);
             System.out.println("Choose Graph:");
             System.out.println("1.Government");
             System.out.println("2.Politicians");
@@ -198,7 +196,9 @@ public class Properties_of_Facebook_Gemsec_Graph {
                 System.out.println("Invalid vertex entered!!!");
                 return;
             }
-
+            DijkstraUndirectedSP sp1 = new DijkstraUndirectedSP(G1, 0);
+            DijkstraUndirectedSP sd2 = new DijkstraUndirectedSP(G2, 0);
+            DijkstraUndirectedSP sd3 = new DijkstraUndirectedSP(G3, 0);
             for (int t = 0; t < G.V(); t++) {
                 if (sp1.hasPathTo(t)) {
                     StdOut.printf("%d to %d (%.2f)  ", s, t, sp1.distTo(t));
