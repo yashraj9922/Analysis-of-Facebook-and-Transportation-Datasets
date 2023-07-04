@@ -16,3 +16,7 @@ Results of hypersensitivity analysis
 1) high quality clusters for a wide range of parameter settings were obtained
 2) Introducing smoothness regularization makes the GEMSEC models more robust to hypersensitivity
 Changes in the length of truncated random walks and the number of random walks per source node has only a marginal effect on the community detection performance.
+
+Scalability and computational efficiency
+1) To create graphs of various sizes, we used the Erdos-Renyi model and with an average degree of 20.
+2) Conclusion -  we can conclude that doubling the size of the graph doubles the time needed for optimizing GEMSEC, thus the growth is linear. We also observe that embedding algorithms that incorporate clustering have a higher cost, and regularization also produces a higher cost, but similar growth.
