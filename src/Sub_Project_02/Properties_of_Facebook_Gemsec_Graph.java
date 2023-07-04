@@ -196,9 +196,9 @@ public class Properties_of_Facebook_Gemsec_Graph {
                 System.out.println("Invalid vertex entered!!!");
                 return;
             }
-            DijkstraUndirectedSP sp1 = new DijkstraUndirectedSP(G1, 0);
-            DijkstraUndirectedSP sd2 = new DijkstraUndirectedSP(G2, 0);
-            DijkstraUndirectedSP sd3 = new DijkstraUndirectedSP(G3, 0);
+            DijkstraUndirectedSP sp1 = new DijkstraUndirectedSP(G1, s);
+            DijkstraUndirectedSP sd2 = new DijkstraUndirectedSP(G2, s);
+            DijkstraUndirectedSP sd3 = new DijkstraUndirectedSP(G3, s);
             for (int t = 0; t < G.V(); t++) {
                 if (sp1.hasPathTo(t)) {
                     StdOut.printf("%d to %d (%.2f)  ", s, t, sp1.distTo(t));
