@@ -46,7 +46,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
             System.out.println("Enter the operation you want to perform (MST or Shortest Distance Path):");
             System.out.println("1.MST");
             System.out.println("2.Shortest Distance");
-            System.out.println("3.Calculate Density of the graph");
+            System.out.println("3.Generate Page Ranking");
             System.out.println("4.Exit");
             System.out.print("Enter your choice: ");
             operationChoice = obj.nextInt();
@@ -70,6 +70,21 @@ public class Properties_of_Facebook_Gemsec_Graph {
                     exitProgram();
                 calculateShortestDistance(shortestPathAlgorithmChoice);
             } else if (operationChoice == 3) {
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Choose Graph:");
+                System.out.println("1.Government");
+                System.out.println("2.Politicians");
+                System.out.println("3.Public_Figure");
+                System.out.println("4.Exit");
+                int graphChoice = sc.nextInt();
+                if(graphChoice == 4) {
+                    System.out.println("Exiting program....");
+                    System.exit(0);
+                } else if (graphChoice < 1 || graphChoice > 4) {
+                    System.out.println("Invalid input!!!");
+                    continue;
+                }
+                GenerateRank(graphChoice);
 
             } else if (operationChoice == 4) {
                 obj.close();
@@ -242,13 +257,57 @@ public class Properties_of_Facebook_Gemsec_Graph {
         return true;
     }
 
-    private static void GenerateTable() {
-        System.out.println("Average MST");
-        System.out.println("Median of MST edge weight");
-        System.out.println("Min edge weight of MST's are");
-        System.out.println("Max edge weight of MST's are");
-        System.out.println("Average Distance");
-        System.out.println("Median of Distances are ");
-        System.out.println();
+    private  static  void GenerateRank(int graphChoice) {
+        String filename = "";
+        if(graphChoice == 1) {
+            filename = "src/Sub_Project_02/01_Government.txt";
+        } else if(graphChoice == 2) {
+            filename = "src/Sub_Project_02/02_Politicians.txt";
+        } else if (graphChoice == 3) {
+            filename = "src/Sub_Project_02/03_Public_figure.txt";
+        } else {
+            System.out.println("Invalid choice !!!");
+            return;
+        }
+        PageRank pageRank = new PageRank(filename);
+        pageRank.calculateRanks();
+
+        double[] ranks = pageRank.getRanks();
+
+        // Create a list of nodes with their corresponding ranks
+        List<PageRank.NodeRank> nodeRanks = new ArrayList<>();
+        for (int i = 0; i < ranks.length; i++) {
+            if (!Double.isInfinite(ranks[i])) {
+                nodeRanks.add(new PageRank.NodeRank(i, ranks[i]));
+            }
+        }
+
+        // Sort the nodes in descending order based on their ranks
+        Collections.sort(nodeRanks, Collections.reverseOrder());
+
+        // Assign ranks to the nodes excluding Infinity
+        for (int i = 0; i < nodeRanks.size(); i++) {
+            nodeRanks.get(i).rank = i + 1;
+        }
+
+        // Display the most popular nodes with their ranks
+        for (PageRank.NodeRank nodeRank : nodeRanks) {
+            StdOut.printf("Node %d: Rank %.0f\n", nodeRank.node, nodeRank.rank);
+        }
+
+    }
+    static class NodeRank implements Comparable<PageRank.NodeRank> {
+        int node;
+        double rank;
+
+        public NodeRank(int node, double rank) {
+            this.node = node;
+            this.rank = rank;
+        }
+
+        @Override
+        public int compareTo(PageRank.NodeRank other) {
+            return Double.compare(rank, other.rank);
+        }
     }
 }
