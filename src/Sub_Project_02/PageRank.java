@@ -87,7 +87,7 @@ public class PageRank {
     }
 
     public static void main(String[] args) {
-        String filename = "src/Sub_Project_02/03_Public_figure.txt"; // Replace with the actual file path
+        String filename = "src/Sub_Project_02/03_Public_figure.txt";
         PageRank pageRank = new PageRank(filename);
         pageRank.calculateRanks();
 
