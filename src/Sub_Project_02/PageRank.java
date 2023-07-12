@@ -86,8 +86,8 @@ public class PageRank {
         return ranks;
     }
 
-    public static void main(String[] args) {
-        String filename = "src/Sub_Project_02/03_Public_figure.txt";
+    public  static void Run(String name) {
+        String filename = name;
         PageRank pageRank = new PageRank(filename);
         pageRank.calculateRanks();
 

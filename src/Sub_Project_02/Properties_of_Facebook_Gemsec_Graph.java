@@ -287,47 +287,8 @@ public class Properties_of_Facebook_Gemsec_Graph {
             return;
         }
         PageRank pageRank = new PageRank(filename);
-        pageRank.calculateRanks();
-
-        double[] ranks = pageRank.getRanks();
-
-        // Create a list of nodes with their corresponding ranks
-        List<PageRank.NodeRank> nodeRanks = new ArrayList<>();
-        for (int i = 0; i < ranks.length; i++) {
-            if (!Double.isInfinite(ranks[i])) {
-                nodeRanks.add(new PageRank.NodeRank(i, ranks[i]));
-            }
-        }
-
-        // Sort the nodes in descending order based on their ranks
-        Collections.sort(nodeRanks, Collections.reverseOrder());
-
-        // Assign ranks to the nodes excluding Infinity
-        for (int i = 0; i < nodeRanks.size(); i++) {
-            nodeRanks.get(i).rank = i + 1;
-        }
-
-        // Display the most popular nodes with their ranks
-        for (PageRank.NodeRank nodeRank : nodeRanks) {
-            StdOut.printf("Node %d: Rank %.0f\n", nodeRank.node, nodeRank.rank);
-        }
-
+        pageRank.Run(filename);
     }
-    static class NodeRank implements Comparable<PageRank.NodeRank> {
-        int node;
-        double rank;
-
-        public NodeRank(int node, double rank) {
-            this.node = node;
-            this.rank = rank;
-        }
-
-        @Override
-        public int compareTo(PageRank.NodeRank other) {
-            return Double.compare(rank, other.rank);
-        }
-    }
-
     private  static void DetectCommunity(int graphChoice) {
         String filename = "";
         if(graphChoice == 1) {
