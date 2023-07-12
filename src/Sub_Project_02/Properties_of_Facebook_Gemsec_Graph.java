@@ -47,7 +47,8 @@ public class Properties_of_Facebook_Gemsec_Graph {
             System.out.println("1.MST");
             System.out.println("2.Shortest Distance");
             System.out.println("3.Generate Page Ranking");
-            System.out.println("4.Exit");
+            System.out.println("4.Community Detection");
+            System.out.println("5.Exit");
             System.out.print("Enter your choice: ");
             operationChoice = obj.nextInt();
             System.out.println();
@@ -87,6 +88,22 @@ public class Properties_of_Facebook_Gemsec_Graph {
                 GenerateRank(graphChoice);
 
             } else if (operationChoice == 4) {
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Choose Graph:");
+                System.out.println("1.Government");
+                System.out.println("2.Politicians");
+                System.out.println("3.Public_Figure");
+                System.out.println("4.Exit");
+                int graphChoice = sc.nextInt();
+                if(graphChoice == 4) {
+                    System.out.println("Exiting program....");
+                    System.exit(0);
+                } else if (graphChoice < 1 || graphChoice > 4) {
+                    System.out.println("Invalid input!!!");
+                    continue;
+                }
+                DetectCommunity(graphChoice);
+            } else if (operationChoice == 5) {
                 obj.close();
                 exitProgram();
             } else {
@@ -310,4 +327,21 @@ public class Properties_of_Facebook_Gemsec_Graph {
             return Double.compare(rank, other.rank);
         }
     }
+
+    private  static void DetectCommunity(int graphChoice) {
+        String filename = "";
+        if(graphChoice == 1) {
+            filename = "src/Sub_Project_02/01_Government.txt";
+        } else if(graphChoice == 2) {
+            filename = "src/Sub_Project_02/02_Politicians.txt";
+        } else if (graphChoice == 3) {
+            filename = "src/Sub_Project_02/03_Public_figure.txt";
+        } else {
+            System.out.println("Invalid choice !!!");
+            return;
+        }
+        CommunityDetection cd = new CommunityDetection();
+        cd.Run(filename);
+    }
 }
+
