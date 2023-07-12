@@ -41,11 +41,12 @@ public class Properties_of_Facebook_Gemsec_Graph {
         Scanner obj = new Scanner(System.in);
         int operationChoice = 1;
 
+
         while (true) {
             System.out.println("Enter the operation you want to perform (MST or Shortest Distance Path):");
             System.out.println("1.MST");
             System.out.println("2.Shortest Distance");
-            System.out.println("3.Generate Table of combined properties(Under construction)");
+            System.out.println("3.Calculate Density of the graph");
             System.out.println("4.Exit");
             System.out.print("Enter your choice: ");
             operationChoice = obj.nextInt();
