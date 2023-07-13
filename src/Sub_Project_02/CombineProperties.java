@@ -7,11 +7,9 @@ public class CombineProperties
 {
     public static void main(String[] args) throws IOException
     {
-        String directoryPath = "E:\\Practice1\\Datasets"; //directory path - replace with your directory path
+        String directoryPath = "C:\\Users\\nachi\\Desktop\\DSA_Project_Github\\Graph_Data_Structure_Project\\src\\Sub_Project_02\\Datasets"; //directory path - replace with your directory path
         // Replace with the directory path
-        String outPath = "E:\\Practice1\\OutputDirectory"; //output directory - replace with your output directory path
         File directory = new File(directoryPath);
-        File outputdir = new File(outPath);
         File[] filesList = directory.listFiles();
         Workbook workbook = new XSSFWorkbook();
         String[] sheetname = {"Sheet1","Sheet2","Sheet3"};
@@ -45,7 +43,7 @@ public class CombineProperties
                 in1.close();
             }
         }
-        FileOutputStream outputStream = new FileOutputStream("Results.csv");
+        FileOutputStream outputStream = new FileOutputStream("Results.xlsx");
         workbook.write(outputStream);
     }
 }
