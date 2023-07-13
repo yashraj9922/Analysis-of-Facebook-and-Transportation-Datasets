@@ -6,24 +6,19 @@ import edu.princeton.cs.algs4.*;
 public class Properties_of_Facebook_Gemsec_Graph {
     static EdgeWeightedGraph G1, G2, G3;
     static EdgeWeightedDigraph DG1, DG2, DG3;
-    // static In in1 = new In("src/Sub_Project_02/01_Government.txt");
-    // static In in2 = new In("src/Sub_Project_02/02_Politicians.txt");
-    // static In in3 = new In("src/Sub_Project_02/03_Public_figure.txt");
-
     public static void ReadEdgeWeightGraph() {
-        In in1 = new In("src/Sub_Project_02/01_Government.txt");
-        In in2 = new In("src/Sub_Project_02/02_Politicians.txt");
-        In in3 = new In("src/Sub_Project_02/03_Public_figure.txt");
+        In in1 = new In("src/Sub_Project_02/Datasets/01_Government.txt");
+        In in2 = new In("src/Sub_Project_02/Datasets/02_Politicians.txt");
+        In in3 = new In("src/Sub_Project_02/Datasets/03_Public_figure.txt");
         G1 = new EdgeWeightedGraph(in1);
         G2 = new EdgeWeightedGraph(in2);
         G3 = new EdgeWeightedGraph(in3);
 
     }
-
     public static void ReadEdgeWeightDigraph() {
-        In in1 = new In("src/Sub_Project_02/01_Government.txt");
-        In in2 = new In("src/Sub_Project_02/02_Politicians.txt");
-        In in3 = new In("src/Sub_Project_02/03_Public_figure.txt");
+        In in1 = new In("src/Sub_Project_02/Datasets/01_Government.txt");
+        In in2 = new In("src/Sub_Project_02/Datasets/02_Politicians.txt");
+        In in3 = new In("src/Sub_Project_02/Datasets/03_Public_figure.txt");
         DG1 = new EdgeWeightedDigraph(in1);
         DG2 = new EdgeWeightedDigraph(in2);
         DG3 = new EdgeWeightedDigraph(in3);
@@ -277,11 +272,11 @@ public class Properties_of_Facebook_Gemsec_Graph {
     private  static  void GenerateRank(int graphChoice) {
         String filename = "";
         if(graphChoice == 1) {
-            filename = "src/Sub_Project_02/01_Government.txt";
+            filename = "src/Sub_Project_02/Datasets/01_Government.txt";
         } else if(graphChoice == 2) {
-            filename = "src/Sub_Project_02/02_Politicians.txt";
+            filename = "src/Sub_Project_02/Datasets/02_Politicians.txt";
         } else if (graphChoice == 3) {
-            filename = "src/Sub_Project_02/03_Public_figure.txt";
+            filename = "src/Sub_Project_02/Datasets/03_Public_figure.txt";
         } else {
             System.out.println("Invalid choice !!!");
             return;
@@ -292,11 +287,11 @@ public class Properties_of_Facebook_Gemsec_Graph {
     private  static void DetectCommunity(int graphChoice) {
         String filename = "";
         if(graphChoice == 1) {
-            filename = "src/Sub_Project_02/01_Government.txt";
+            filename = "src/Sub_Project_02/Datasets/01_Government.txt";
         } else if(graphChoice == 2) {
-            filename = "src/Sub_Project_02/02_Politicians.txt";
+            filename = "src/Sub_Project_02/Datasets/02_Politicians.txt";
         } else if (graphChoice == 3) {
-            filename = "src/Sub_Project_02/03_Public_figure.txt";
+            filename = "src/Sub_Project_02/Datasets/03_Public_figure.txt";
         } else {
             System.out.println("Invalid choice !!!");
             return;
