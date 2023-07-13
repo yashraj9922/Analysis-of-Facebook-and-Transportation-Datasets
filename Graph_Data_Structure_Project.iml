@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="algs4" level="project" />
+    <orderEntry type="library" name="poi-5.2.3" level="project" />
   </component>
 </module>
