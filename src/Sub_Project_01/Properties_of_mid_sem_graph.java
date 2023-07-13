@@ -37,8 +37,9 @@ public class Properties_of_mid_sem_graph {
         while(true) {
             System.out.println("Enter the operation you want to perform (MST or Shortest Distance Path):");
             System.out.println("1.MST");
-            System.out.println("2.Shortest Distance");
-            System.out.println("3.Exit");
+            System.out.println("2.Print all Shortest Path");
+            System.out.println("3.Shortest Path between two nodes");
+            System.out.println("4.Exit");
             System.out.print("Enter your choice: ");
             operationChoice = scanner.nextInt();
             System.out.println();
@@ -57,8 +58,15 @@ public class Properties_of_mid_sem_graph {
                 System.out.println("3.Exit");
                 int shortestPathAlgorithmChoice = scanner.nextInt();
                 if (shortestPathAlgorithmChoice == 3) exitProgram();
-                calculateShortestDistance(shortestPathAlgorithmChoice);
+                ShortestDistance(shortestPathAlgorithmChoice);
             } else if (operationChoice == 3) {
+                Scanner sc = new Scanner(System.in);
+                System.out.print("Enter source: ");
+                int src = sc.nextInt();
+                System.out.println("Enter Destination: ");
+                int dest = sc.nextInt();
+                ShortestDistance(src, dest);
+            } else if (operationChoice == 4) {
                 exitProgram();
             } else {
                 System.out.println("Invalid operation choice.");
@@ -199,5 +207,71 @@ public class Properties_of_mid_sem_graph {
             }
         }
         System.out.println();
+    }
+
+    private static void ShortestDistance(int shortestPathAlgorithmChoice) {
+        Scanner scanner = new Scanner(System.in);
+        if (shortestPathAlgorithmChoice == 1) {
+            System.out.println("Properties of combined Distance is ->");
+            System.out.println("Choose Graph:");
+            System.out.println("1.Graph_01");
+            System.out.println("2.Graph_02");
+            System.out.println("3.Graph_03");
+            System.out.println("4.Exit");
+            int choice = scanner.nextInt();
+            if (choice == 4) {
+                exitProgram();
+            }
+            EdgeWeightedDigraph G = null;
+            if (choice == 1) {
+                G = DG1;
+            } else if (choice == 2) {
+                G = DG2;
+            } else if (choice == 3) {
+                G = DG3;
+            } else {
+                exitProgram();
+            }
+            System.out.println("Enter the source vertex (0-5 vertices)");
+            int src = scanner.nextInt();
+            System.out.println("Enter the destination vertex (0-5 vertices)");
+            int dest = scanner.nextInt();
+            if (src > 5 || dest > 5) {
+                System.out.println("Invalid vertex entered!!!");
+                return;
+            }
+            BellmanFordSP sp = new BellmanFordSP(G, src);
+
+            // Print shortest path
+            if (sp.hasPathTo(dest)) {
+                System.out.printf("Shortest distance from %d to %d: %.2f\n", src, dest, sp.distTo(dest));
+                System.out.print("Shortest path: ");
+                for (DirectedEdge e : sp.pathTo(dest)) {
+                    System.out.print(e + " ");
+                }
+                System.out.println();
+            } else {
+                System.out.printf("No path exists from %d to %d\n", src, dest);
+            }
+        } else {
+            // Rest of the code for Dijkstra's algorithm
+        }
+        System.out.println();
+    }
+    private static  void ShortestDistance(int src, int dest) {
+        DijkstraUndirectedSP sd1 = new DijkstraUndirectedSP(G1,src);
+        DijkstraUndirectedSP sd2 = new DijkstraUndirectedSP(G2,src);
+        DijkstraUndirectedSP sd3 = new DijkstraUndirectedSP(G3,src);
+
+        double min = Integer.MAX_VALUE;
+
+        if(sd1.hasPathTo(dest)) min =  Math.min(min, sd1.distTo(dest));
+        if(sd2.hasPathTo(dest)) min =  Math.min(min, sd2.distTo(dest));
+        if(sd3.hasPathTo(dest)) min =  Math.min(min, sd3.distTo(dest));
+
+        if(min == Integer.MAX_VALUE) System.out.println("No path exists!!!");
+        else {
+            System.out.println("Shortest path between " + src + " and " + dest + " is " + min);
+        }
     }
 }
