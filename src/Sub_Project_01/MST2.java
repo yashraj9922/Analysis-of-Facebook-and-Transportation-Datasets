@@ -6,12 +6,52 @@ import edu.princeton.cs.algs4.*;
 public class MST2 {
     private static final int vertexCount = 6;
 
-    public void averageMST(EdgeWeightedGraph g1, EdgeWeightedGraph g2, EdgeWeightedGraph g3) {
+    public void averageMST(EdgeWeightedGraph g1, EdgeWeightedGraph g2, EdgeWeightedGraph g3) throws IOException{
         PrimMST mst1 = new PrimMST(g1);
         PrimMST mst2 = new PrimMST(g2);
         PrimMST mst3 = new PrimMST(g3);
+        FileWriter fw1 = new FileWriter("MST1.txt");
+        BufferedWriter bf1 = new BufferedWriter(fw1);
 
-        EdgeWeightedGraph combinedGraph = mergeGraphs(g1, g2, g3);
+        for(Edge e : mst1.edges())
+        {
+            String s = e.toString();
+            bf1.write(s);
+            bf1.newLine();
+        }
+        bf1.close();
+        fw1.close();
+        fw1 = new FileWriter("MST2.txt");
+        bf1 = new BufferedWriter(fw1);
+        for(Edge e : mst1.edges())
+        {
+            String s = e.toString();
+            bf1.write(s);
+            bf1.newLine();
+        }
+        bf1.close();
+        fw1.close();
+        fw1 = new FileWriter("MST3.txt");
+        bf1 = new BufferedWriter(fw1);
+        for(Edge e : mst1.edges())
+        {
+            String s = e.toString();
+            bf1.write(s);
+            bf1.newLine();
+        }
+        bf1.close();
+        fw1.close();
+        In in1 = new In("MST1.txt");
+        In in2 = new In("MST2.txt");
+        In in3 = new In("MST3.txt");
+        EdgeWeightedGraph eg1 = new EdgeWeightedGraph(in1);
+        EdgeWeightedGraph eg2 = new EdgeWeightedGraph(in2);
+        EdgeWeightedGraph eg3 = new EdgeWeightedGraph(in3);
+        mst1 = new PrimMST(eg1);
+        mst2 = new PrimMST(eg2);
+        mst3 = new PrimMST(eg3);
+        EdgeWeightedGraph combinedGraph = mergeGraphs(eg1, eg2, eg3);
+        
         PrimMST mst4 = new PrimMST(combinedGraph);
 
         System.out.println("Average MST:");
@@ -28,7 +68,8 @@ public class MST2 {
         System.out.println("Median MST Weight: " + medianMSTWeight);
     }
 
-    private EdgeWeightedGraph mergeGraphs(EdgeWeightedGraph g1, EdgeWeightedGraph g2, EdgeWeightedGraph g3) {
+    private EdgeWeightedGraph mergeGraphs(EdgeWeightedGraph g1, EdgeWeightedGraph g2, EdgeWeightedGraph g3) 
+    {
         EdgeWeightedGraph combinedGraph = new EdgeWeightedGraph(vertexCount);
         for (Edge edge : g1.edges()) {
             combinedGraph.addEdge(edge);

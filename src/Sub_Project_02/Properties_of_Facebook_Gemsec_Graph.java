@@ -81,6 +81,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
                     continue;
                 }
                 GenerateRank(graphChoice);
+                sc.close();
 
             } else if (operationChoice == 4) {
                 Scanner sc = new Scanner(System.in);
@@ -98,6 +99,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
                     continue;
                 }
                 DetectCommunity(graphChoice);
+                sc.close();
             } else if (operationChoice == 5) {
                 obj.close();
                 exitProgram();
@@ -160,6 +162,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
             int s = scanner.nextInt();
             if (!validateSourceVertex(choice, s)) {
                 System.out.println("Invalid vertex entered!!!");
+                scanner.close();
                 return;
             }
             BellmanFordSP sp1 = new BellmanFordSP(DG1, s);
@@ -222,6 +225,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
 
             if (!validateSourceVertex(choice, s)) {
                 System.out.println("Invalid vertex entered!!!");
+                scanner.close();
                 return;
             }
             DijkstraUndirectedSP sp1 = new DijkstraUndirectedSP(G1, s);
@@ -240,6 +244,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
             }
         }
         System.out.println();
+        scanner.close();
     }
 
     private static void graphCall(int choice) {
