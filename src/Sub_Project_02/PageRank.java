@@ -1,12 +1,11 @@
-package src.Sub_Project_02;
+package Sub_Project_02;
 
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
-
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class PageRank {
     private static final double DAMPING_FACTOR = 0.85;

@@ -1,4 +1,4 @@
-package src.Sub_Project_02;
+package Sub_Project_02;
 //checking
 import java.util.*;
 import edu.princeton.cs.algs4.*;
@@ -282,7 +282,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
             return;
         }
         PageRank pageRank = new PageRank(filename);
-        pageRank.Run(filename);
+        PageRank.Run(filename);
     }
     private  static void DetectCommunity(int graphChoice) {
         String filename = "";

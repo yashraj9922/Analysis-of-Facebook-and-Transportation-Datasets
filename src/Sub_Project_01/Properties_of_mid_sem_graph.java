@@ -1,4 +1,4 @@
-package src.Sub_Project_01;
+package Sub_Project_01;
 
 import java.util.*;
 import edu.princeton.cs.algs4.*;
@@ -63,8 +63,16 @@ public class Properties_of_mid_sem_graph {
                 Scanner sc = new Scanner(System.in);
                 System.out.print("Enter source: ");
                 int src = sc.nextInt();
-                System.out.println("Enter Destination: ");
+                if(src < 0 || src > 5) {
+                    System.out.println("Invalid source!!!");
+                    continue;
+                }
+                System.out.print("Enter Destination: ");
                 int dest = sc.nextInt();
+                if(dest < 0 || dest > 5) {
+                    System.out.println("Invalid Destination!!!");
+                    continue;
+                }
                 ShortestDistance(src, dest);
             } else if (operationChoice == 4) {
                 exitProgram();
@@ -263,15 +271,25 @@ public class Properties_of_mid_sem_graph {
         DijkstraUndirectedSP sd2 = new DijkstraUndirectedSP(G2,src);
         DijkstraUndirectedSP sd3 = new DijkstraUndirectedSP(G3,src);
 
-        double min = Integer.MAX_VALUE;
-
-        if(sd1.hasPathTo(dest)) min =  Math.min(min, sd1.distTo(dest));
-        if(sd2.hasPathTo(dest)) min =  Math.min(min, sd2.distTo(dest));
-        if(sd3.hasPathTo(dest)) min =  Math.min(min, sd3.distTo(dest));
-
-        if(min == Integer.MAX_VALUE) System.out.println("No path exists!!!");
-        else {
-            System.out.println("Shortest path between " + src + " and " + dest + " is " + min);
-        }
+        double first = sd1.distTo(dest);
+        double second = sd2.distTo(dest);
+        double third = sd3.distTo(dest);
+        double avg = (first + second + third)/3.0d;
+        double min = Math.min(Math.min(first, second), third);
+        double max = Math.max(Math.max(first, second), third);
+        double median = first + second + third - min - max;
+        String maxWay = "";
+        String minWay = "";
+        if(min == first) minWay = "Roadways";
+        else if (min == second) minWay = "Railways";
+        else minWay = "Subways";
+        if(max == first) maxWay = "Roadways";
+        else if (max == second) maxWay = "Railways";
+        else maxWay = "Subways";
+        System.out.printf("Average cost of travelling from %d to %d is %.2f\n",src, dest, avg);
+        System.out.printf("Median cost of travelling from %d to %d is %.2f\n",src, dest, median);
+        System.out.printf("Max cost of travelling from %d to %d is %.2f by %s\n",src, dest, max, maxWay);
+        System.out.printf("Min cost of travelling from %d to %d is %.2f by %s\n",src, dest, min, minWay);
+        System.out.println();
     }
 }

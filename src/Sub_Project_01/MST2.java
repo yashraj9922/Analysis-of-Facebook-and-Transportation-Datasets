@@ -1,4 +1,4 @@
-package src.Sub_Project_01;
+package Sub_Project_01;
 
 import java.io.*;
 import edu.princeton.cs.algs4.*;

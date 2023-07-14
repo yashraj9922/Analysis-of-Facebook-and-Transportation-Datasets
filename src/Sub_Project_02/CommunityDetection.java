@@ -1,4 +1,4 @@
-package src.Sub_Project_02;
+package Sub_Project_02;
 
 import edu.princeton.cs.algs4.Graph;
 import edu.princeton.cs.algs4.In;
