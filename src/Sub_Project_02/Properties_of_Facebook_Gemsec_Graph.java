@@ -97,12 +97,12 @@ public class Properties_of_Facebook_Gemsec_Graph {
                 }
                 DetectCommunity(graphChoice);
             } else if (operationChoice == 5) {
-                
+
                 exitProgram();
             } else {
                 System.out.println("Invalid operation choice.");
             }
-            
+
         }
     }
 
@@ -158,7 +158,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
             int s = scanner.nextInt();
             if (!validateSourceVertex(choice, s)) {
                 System.out.println("Invalid vertex entered!!!");
-                
+
                 return;
             }
             BellmanFordSP sp1 = new BellmanFordSP(DG1, s);
@@ -205,13 +205,13 @@ public class Properties_of_Facebook_Gemsec_Graph {
             if (choice == 4) {
                 exitProgram();
             }
-            EdgeWeightedGraph G = null;
+            EdgeWeightedGraph EWG = null;
             if (choice == 1) {
-                G = G1;
+                EWG = G1;
             } else if (choice == 2) {
-                G = G2;
+                EWG = G2;
             } else if (choice == 3) {
-                G = G3;
+                EWG = G3;
             } else {
                 exitProgram();
             }
@@ -219,11 +219,11 @@ public class Properties_of_Facebook_Gemsec_Graph {
 
             if (!validateSourceVertex(choice, s)) {
                 System.out.println("Invalid vertex entered!!!");
-                
+
                 return;
             }
-            DijkstraUndirectedSP sp1 = new DijkstraUndirectedSP(G1, s);
-            for (int t = 0; t < G.V(); t++) {
+            DijkstraUndirectedSP sp1 = new DijkstraUndirectedSP(EWG, s);
+            for (int t = 0; t < EWG.V(); t++) {
                 if (sp1.hasPathTo(t)) {
                     StdOut.printf("%d to %d (%.2f)  ", s, t, sp1.distTo(t));
                     for (Edge e : sp1.pathTo(t)) {
@@ -236,7 +236,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
             }
         }
         System.out.println();
-        
+
     }
 
     private static void graphCall(int choice) {
