@@ -94,9 +94,9 @@ public class MST2 {
 
     public static void main(String[] args) throws IOException {
         EdgeWeightedGraph[] graphs = new EdgeWeightedGraph[3];
-        In in = new In("src\\Sub_Project_01\\Graph_01.txt");
-        In in1 = new In("src\\Sub_Project_01\\Graph_02.txt");
-        In in2 = new In("src\\Sub_Project_01\\Graph_03.txt");
+        In in = new In("src\\Sub_Project_01\\Datasets\\Graph_01.txt");
+        In in1 = new In("src\\Sub_Project_01\\Datasets\\Graph_02.txt");
+        In in2 = new In("src\\Sub_Project_01\\Datasets\\Graph_03.txt");
         graphs[0] = new EdgeWeightedGraph(in);
         graphs[1] = new EdgeWeightedGraph(in1);
         graphs[2] = new EdgeWeightedGraph(in2);

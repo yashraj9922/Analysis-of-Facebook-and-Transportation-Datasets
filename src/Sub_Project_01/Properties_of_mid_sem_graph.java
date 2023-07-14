@@ -6,9 +6,9 @@ import edu.princeton.cs.algs4.*;
 public class Properties_of_mid_sem_graph {
     static EdgeWeightedGraph G1, G2, G3;
     static EdgeWeightedDigraph DG1, DG2, DG3;
-    static String filename1 = "src/Sub_Project_01/Graph_01.txt";
-    static String filename2 = "src/Sub_Project_01/Graph_02.txt";
-    static String filename3 = "src/Sub_Project_01/Graph_03.txt";
+    static String filename1 = "src/Sub_Project_01/Datasets/Graph_01.txt";
+    static String filename2 = "src/Sub_Project_01/Datasets/Graph_02.txt";
+    static String filename3 = "src/Sub_Project_01/Datasets/Graph_03.txt";
 
     public static void ReadEdgeWeightGraph() {
         In in1 = new In(filename1);
