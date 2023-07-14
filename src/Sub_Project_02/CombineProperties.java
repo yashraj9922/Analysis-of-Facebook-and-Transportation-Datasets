@@ -17,6 +17,7 @@ public class CombineProperties
         String[] sheetname = {"Sheet1","Sheet2","Sheet3"};
         if (filesList == null) {
             System.out.println("Specified directory is empty or does not exist.");
+            workbook.close();
             return;
         }
         for (int k = 0 ;k < filesList.length; k++)
@@ -47,6 +48,7 @@ public class CombineProperties
         }
         FileOutputStream outputStream = new FileOutputStream("Results.csv");
         workbook.write(outputStream);
+        workbook.close();
     }
 }
 
