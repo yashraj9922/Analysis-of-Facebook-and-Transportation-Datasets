@@ -9,6 +9,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
     static String filename1 = "src/Sub_Project_02/Datasets/01_Government.txt";
     static String filename2 = "src/Sub_Project_02/Datasets/02_Politicians.txt";
     static String filename3 = "src/Sub_Project_02/Datasets/03_Public_figure.txt";
+
     public static void ReadEdgeWeightGraph() {
         In in1 = new In(filename1);
         In in2 = new In(filename2);
@@ -249,8 +250,8 @@ public class Properties_of_Facebook_Gemsec_Graph {
             System.out.println("Invalid choice !!!");
             return;
         }
-        PageRank pageRank = new PageRank(filename);
-        pageRank.Run(filename);
+        // PageRank pageRank = new PageRank(filename);
+        PageRank.Run(filename);
     }
 
     private static void DetectCommunity(int graphChoice) {
