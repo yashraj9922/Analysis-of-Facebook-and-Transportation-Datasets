@@ -1,4 +1,4 @@
-package src.Sub_Project_02;
+package Sub_Project_02;
 import edu.princeton.cs.algs4.*;
 import java.io.*;
 import org.apache.poi.ss.usermodel.*;
@@ -17,7 +17,6 @@ public class CombineProperties
         String[] sheetname = {"Sheet1","Sheet2","Sheet3"};
         if (filesList == null) {
             System.out.println("Specified directory is empty or does not exist.");
-            workbook.close();
             return;
         }
         for (int k = 0 ;k < filesList.length; k++)
@@ -43,12 +42,10 @@ public class CombineProperties
                     sum /= ct;
                     dataRow.createCell(0).setCellValue(sum);
                 }
-                in1.close();
             }
         }
         FileOutputStream outputStream = new FileOutputStream("Results.csv");
         workbook.write(outputStream);
-        workbook.close();
     }
 }
 

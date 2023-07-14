@@ -5,9 +5,9 @@ import edu.princeton.cs.algs4.*;
 
 public class Properties_of_mid_sem_graph {
     static EdgeWeightedGraph G1, G2, G3;
-    static  EdgeWeightedDigraph DG1, DG2, DG3;
+    static EdgeWeightedDigraph DG1, DG2, DG3;
 
-    public static void ReadEdgeWeightGraph(){
+    public static void ReadEdgeWeightGraph() {
         In in1 = new In("src/Sub_Project_01/Graph_01.txt");
         In in2 = new In("src/Sub_Project_01/Graph_02.txt");
         In in3 = new In("src/Sub_Project_01/Graph_03.txt");
@@ -15,6 +15,7 @@ public class Properties_of_mid_sem_graph {
         G2 = new EdgeWeightedGraph(in2);
         G3 = new EdgeWeightedGraph(in3);
     }
+
     public static void ReadEdgeWeightDigraph() {
         In in1 = new In("src/Sub_Project_01/Graph_01.txt");
         In in2 = new In("src/Sub_Project_01/Graph_02.txt");
@@ -23,10 +24,12 @@ public class Properties_of_mid_sem_graph {
         DG2 = new EdgeWeightedDigraph(in2);
         DG3 = new EdgeWeightedDigraph(in3);
     }
-    private static  void exitProgram() {
+
+    private static void exitProgram() {
         System.out.println("Exiting program.....");
         System.exit(0);
     }
+
     public static void main(String[] args) {
         ReadEdgeWeightGraph();
         ReadEdgeWeightDigraph();
@@ -34,7 +37,7 @@ public class Properties_of_mid_sem_graph {
         Scanner scanner = new Scanner(System.in);
         int operationChoice = 1;
 
-        while(true) {
+        while (true) {
             System.out.println("Enter the operation you want to perform (MST or Shortest Distance Path):");
             System.out.println("1.MST");
             System.out.println("2.Print all Shortest Path");
@@ -49,7 +52,8 @@ public class Properties_of_mid_sem_graph {
                 System.out.println("2.Kruskal");
                 System.out.println("3.Exit");
                 int mstAlgorithmChoice = scanner.nextInt();
-                if(mstAlgorithmChoice == 3) exitProgram();
+                if (mstAlgorithmChoice == 3)
+                    exitProgram();
                 calculateMST(mstAlgorithmChoice);
             } else if (operationChoice == 2) {
                 System.out.println("Enter the shortest path algorithm:");
@@ -57,34 +61,34 @@ public class Properties_of_mid_sem_graph {
                 System.out.println("2.Dijkstra");
                 System.out.println("3.Exit");
                 int shortestPathAlgorithmChoice = scanner.nextInt();
-                if (shortestPathAlgorithmChoice == 3) exitProgram();
+                if (shortestPathAlgorithmChoice == 3)
+                    exitProgram();
                 calculateShortestDistance(shortestPathAlgorithmChoice);
             } else if (operationChoice == 3) {
                 Scanner sc = new Scanner(System.in);
                 System.out.print("Enter source: ");
                 int src = sc.nextInt();
-                if(src < 0 || src > 5) {
+                if (src < 0 || src > 5) {
                     System.out.println("Invalid source!!!");
                     continue;
                 }
                 System.out.print("Enter Destination: ");
                 int dest = sc.nextInt();
-                if(dest < 0 || dest > 5) {
+                if (dest < 0 || dest > 5) {
                     System.out.println("Invalid Destination!!!");
                     continue;
                 }
                 ShortestDistance(src, dest);
-//                sc.close();
             } else if (operationChoice == 4) {
-                scanner.close();
                 exitProgram();
             } else {
                 System.out.println("Invalid operation choice.");
             }
         }
     }
+
     private static void calculateMST(int mstAlgorithmChoice) {
-        if(mstAlgorithmChoice == 1){
+        if (mstAlgorithmChoice == 1) {
             PrimMST mst1 = new PrimMST(G1);
             PrimMST mst2 = new PrimMST(G2);
             PrimMST mst3 = new PrimMST(G3);
@@ -92,7 +96,7 @@ public class Properties_of_mid_sem_graph {
             double first = mst1.weight();
             double second = mst2.weight();
             double third = mst3.weight();
-            double avg = (first + second + third)/3.0d;
+            double avg = (first + second + third) / 3.0d;
             double min = Math.min(Math.min(first, second), third);
             double max = Math.max(Math.max(first, second), third);
             double median = first + second + third - min - max;
@@ -101,8 +105,7 @@ public class Properties_of_mid_sem_graph {
             System.out.println("Minimum MST Weight = " + min);
             System.out.println("Maximum MST Weight = " + max);
             System.out.println();
-        }
-        else{
+        } else {
             KruskalMST mst1 = new KruskalMST(G1);
             KruskalMST mst2 = new KruskalMST(G2);
             KruskalMST mst3 = new KruskalMST(G3);
@@ -110,7 +113,7 @@ public class Properties_of_mid_sem_graph {
             double first = mst1.weight();
             double second = mst2.weight();
             double third = mst3.weight();
-            double avg = (first + second + third)/3.0d;
+            double avg = (first + second + third) / 3.0d;
             double min = Math.min(Math.min(first, second), third);
             double max = Math.max(Math.max(first, second), third);
             double median = first + second + third - min - max;
@@ -121,10 +124,11 @@ public class Properties_of_mid_sem_graph {
             System.out.println();
         }
     }
+
     private static void calculateShortestDistance(int shortestPathAlgorithmChoice) {
         Scanner scanner = new Scanner(System.in);
-        if(shortestPathAlgorithmChoice == 1) {
-            
+        if (shortestPathAlgorithmChoice == 1) {
+
             System.out.println("Properties of combined Distance is ->");
             System.out.println("Choose Graph:");
             System.out.println("1.Graph_01");
@@ -134,25 +138,22 @@ public class Properties_of_mid_sem_graph {
             int choice = scanner.nextInt();
             System.out.println("Enter the source vertex (0-5 vertices)");
             int s = scanner.nextInt();
-            if(s>5){
+            if (s > 5) {
                 System.out.println("Invalid vertex entered!!!");
-                scanner.close();
                 return;
             }
-            BellmanFordSP sp1 = new BellmanFordSP(DG1,s);
-            BellmanFordSP sp2 = new BellmanFordSP(DG2,s);
-            BellmanFordSP sp3 = new BellmanFordSP(DG3,s);
+            BellmanFordSP sp1 = new BellmanFordSP(DG1, s);
             EdgeWeightedDigraph G = null;
-            if(choice == 1){
+            if (choice == 1) {
                 G = DG1;
             } else if (choice == 2) {
                 G = DG2;
-            } else if(choice == 3) {
+            } else if (choice == 3) {
                 G = DG3;
             } else {
                 exitProgram();
             }
-            //  print negative cycle
+            // print negative cycle
             if (sp1.hasNegativeCycle()) {
                 for (DirectedEdge e : sp1.negativeCycle())
                     StdOut.println(e);
@@ -167,44 +168,39 @@ public class Properties_of_mid_sem_graph {
                             StdOut.print(e + "   ");
                         }
                         StdOut.println();
-                    }
-                    else {
+                    } else {
                         StdOut.printf("%d to %d           no path\n", s, v);
                     }
                 }
             }
             System.out.println();
-        }
-        else {
+        } else {
             System.out.println("Choose Graph:");
             System.out.println("1.Graph_01");
             System.out.println("2.Graph_02");
             System.out.println("3.Graph_03");
             System.out.println("4.Exit");
             int choice = scanner.nextInt();
-            if(choice == 4){
+            if (choice == 4) {
                 exitProgram();
             }
             EdgeWeightedGraph G = null;
-            if(choice == 1){
+            if (choice == 1) {
                 G = G1;
             } else if (choice == 2) {
                 G = G2;
-            } else if(choice == 3){
+            } else if (choice == 3) {
                 G = G3;
-            } else{
+            } else {
                 exitProgram();
             }
             System.out.println("Enter the source vertex (0-5 vertices)");
             int s = scanner.nextInt();
-            if(s>5){
+            if (s > 5) {
                 System.out.println("Invalid vertex entered!!!");
-                scanner.close();
                 return;
             }
-            DijkstraUndirectedSP sp1 = new DijkstraUndirectedSP(G1,s);
-            DijkstraUndirectedSP sd2 = new DijkstraUndirectedSP(G2,s);
-            DijkstraUndirectedSP sd3 = new DijkstraUndirectedSP(G3,s);
+            DijkstraUndirectedSP sp1 = new DijkstraUndirectedSP(G1, s);
             for (int t = 0; t < G.V(); t++) {
                 if (sp1.hasPathTo(t)) {
                     StdOut.printf("%d to %d (%.2f)  ", s, t, sp1.distTo(t));
@@ -212,14 +208,12 @@ public class Properties_of_mid_sem_graph {
                         StdOut.print(e + "   ");
                     }
                     StdOut.println();
-                }
-                else {
+                } else {
                     StdOut.printf("%d to %d         no path\n", s, t);
                 }
             }
         }
         System.out.println();
-//        scanner.close();
     }
 
     private static void ShortestDistance(int shortestPathAlgorithmChoice) {
@@ -251,7 +245,6 @@ public class Properties_of_mid_sem_graph {
             int dest = scanner.nextInt();
             if (src > 5 || dest > 5) {
                 System.out.println("Invalid vertex entered!!!");
-                scanner.close();
                 return;
             }
             BellmanFordSP sp = new BellmanFordSP(G, src);
@@ -271,30 +264,36 @@ public class Properties_of_mid_sem_graph {
             // Rest of the code for Dijkstra's algorithm
         }
         System.out.println();
-        scanner.close();
     }
-    private static  void ShortestDistance(int src, int dest) {
-        DijkstraUndirectedSP sd1 = new DijkstraUndirectedSP(G1,src);
-        DijkstraUndirectedSP sd2 = new DijkstraUndirectedSP(G2,src);
-        DijkstraUndirectedSP sd3 = new DijkstraUndirectedSP(G3,src);
+
+    private static void ShortestDistance(int src, int dest) {
+        DijkstraUndirectedSP sd1 = new DijkstraUndirectedSP(G1, src);
+        DijkstraUndirectedSP sd2 = new DijkstraUndirectedSP(G2, src);
+        DijkstraUndirectedSP sd3 = new DijkstraUndirectedSP(G3, src);
 
         double first = sd1.distTo(dest);
         double second = sd2.distTo(dest);
         double third = sd3.distTo(dest);
-        double avg = (first + second + third)/3.0d;
+        double avg = (first + second + third) / 3.0d;
         double min = Math.min(Math.min(first, second), third);
         double max = Math.max(Math.max(first, second), third);
         double median = first + second + third - min - max;
         String maxWay = "";
         String minWay = "";
-        if(min == first) minWay = "Roadways";
-        else if (min == second) minWay = "Railways";
-        else minWay = "Subways";
-        if(max == first) maxWay = "Roadways";
-        else if (max == second) maxWay = "Railways";
-        else maxWay = "Subways";
-        System.out.printf("Average cost of travelling from %d to %d is %.2f\n",src, dest, avg);
-        System.out.printf("Median cost of travelling from %d to %d is %.2f\n",src, dest, median);
+        if (min == first)
+            minWay = "Roadways";
+        else if (min == second)
+            minWay = "Railways";
+        else
+            minWay = "Subways";
+        if (max == first)
+            maxWay = "Roadways";
+        else if (max == second)
+            maxWay = "Railways";
+        else
+            maxWay = "Subways";
+        System.out.printf("Average cost of travelling from %d to %d is %.2f\n", src, dest, avg);
+        System.out.printf("Median cost of travelling from %d to %d is %.2f\n", src, dest, median);
         if (median == first) {
             System.out.println("Path taken (Roadways):");
             for (Edge e : sd1.pathTo(dest)) {
@@ -314,7 +313,7 @@ public class Properties_of_mid_sem_graph {
             }
             System.out.println();
         }
-        System.out.printf("Max cost of travelling from %d to %d is %.2f by %s\n",src, dest, max, maxWay);
+        System.out.printf("Max cost of travelling from %d to %d is %.2f by %s\n", src, dest, max, maxWay);
         if (maxWay.equals("Roadways")) {
             System.out.println("Path taken (Roadways):");
             for (Edge e : sd1.pathTo(dest)) {
@@ -334,7 +333,7 @@ public class Properties_of_mid_sem_graph {
             }
             System.out.println();
         }
-        System.out.printf("Min cost of travelling from %d to %d is %.2f by %s\n",src, dest, min, minWay);
+        System.out.printf("Min cost of travelling from %d to %d is %.2f by %s\n", src, dest, min, minWay);
         if (minWay.equals("Roadways")) {
             System.out.println("Path taken (Roadways):");
             for (Edge e : sd1.pathTo(dest)) {

@@ -1,11 +1,12 @@
 package Sub_Project_02;
-//checking
+
 import java.util.*;
 import edu.princeton.cs.algs4.*;
 
 public class Properties_of_Facebook_Gemsec_Graph {
     static EdgeWeightedGraph G1, G2, G3;
     static EdgeWeightedDigraph DG1, DG2, DG3;
+
     public static void ReadEdgeWeightGraph() {
         In in1 = new In("src/Sub_Project_02/Datasets/01_Government.txt");
         In in2 = new In("src/Sub_Project_02/Datasets/02_Politicians.txt");
@@ -14,6 +15,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
         G2 = new EdgeWeightedGraph(in2);
         G3 = new EdgeWeightedGraph(in3);
     }
+
     public static void ReadEdgeWeightDigraph() {
         In in1 = new In("src/Sub_Project_02/Datasets/01_Government.txt");
         In in2 = new In("src/Sub_Project_02/Datasets/02_Politicians.txt");
@@ -34,7 +36,6 @@ public class Properties_of_Facebook_Gemsec_Graph {
 
         Scanner obj = new Scanner(System.in);
         int operationChoice = 1;
-
 
         while (true) {
             System.out.println("Enter the operation you want to perform (MST or Shortest Distance Path):");
@@ -65,14 +66,13 @@ public class Properties_of_Facebook_Gemsec_Graph {
                     exitProgram();
                 calculateShortestDistance(shortestPathAlgorithmChoice);
             } else if (operationChoice == 3) {
-                Scanner sc = new Scanner(System.in);
                 System.out.println("Choose Graph:");
                 System.out.println("1.Government");
                 System.out.println("2.Politicians");
                 System.out.println("3.Public_Figure");
                 System.out.println("4.Exit");
-                int graphChoice = sc.nextInt();
-                if(graphChoice == 4) {
+                int graphChoice = obj.nextInt();
+                if (graphChoice == 4) {
                     System.out.println("Exiting program....");
                     System.exit(0);
                 } else if (graphChoice < 1 || graphChoice > 4) {
@@ -80,17 +80,15 @@ public class Properties_of_Facebook_Gemsec_Graph {
                     continue;
                 }
                 GenerateRank(graphChoice);
-                sc.close();
 
             } else if (operationChoice == 4) {
-                Scanner sc = new Scanner(System.in);
                 System.out.println("Choose Graph:");
                 System.out.println("1.Government");
                 System.out.println("2.Politicians");
                 System.out.println("3.Public_Figure");
                 System.out.println("4.Exit");
-                int graphChoice = sc.nextInt();
-                if(graphChoice == 4) {
+                int graphChoice = obj.nextInt();
+                if (graphChoice == 4) {
                     System.out.println("Exiting program....");
                     System.exit(0);
                 } else if (graphChoice < 1 || graphChoice > 4) {
@@ -99,11 +97,12 @@ public class Properties_of_Facebook_Gemsec_Graph {
                 }
                 DetectCommunity(graphChoice);
             } else if (operationChoice == 5) {
-                obj.close();
+                
                 exitProgram();
             } else {
                 System.out.println("Invalid operation choice.");
             }
+            
         }
     }
 
@@ -156,16 +155,13 @@ public class Properties_of_Facebook_Gemsec_Graph {
             System.out.println("4.Exit");
             int choice = scanner.nextInt();
             graphCall(choice);
-
             int s = scanner.nextInt();
             if (!validateSourceVertex(choice, s)) {
                 System.out.println("Invalid vertex entered!!!");
-                scanner.close();
+                
                 return;
             }
             BellmanFordSP sp1 = new BellmanFordSP(DG1, s);
-            BellmanFordSP sp2 = new BellmanFordSP(DG2, s);
-            BellmanFordSP sp3 = new BellmanFordSP(DG3, s);
             EdgeWeightedDigraph G = null;
             if (choice == 1) {
                 G = DG1;
@@ -223,12 +219,10 @@ public class Properties_of_Facebook_Gemsec_Graph {
 
             if (!validateSourceVertex(choice, s)) {
                 System.out.println("Invalid vertex entered!!!");
-                scanner.close();
+                
                 return;
             }
             DijkstraUndirectedSP sp1 = new DijkstraUndirectedSP(G1, s);
-            DijkstraUndirectedSP sd2 = new DijkstraUndirectedSP(G2, s);
-            DijkstraUndirectedSP sd3 = new DijkstraUndirectedSP(G3, s);
             for (int t = 0; t < G.V(); t++) {
                 if (sp1.hasPathTo(t)) {
                     StdOut.printf("%d to %d (%.2f)  ", s, t, sp1.distTo(t));
@@ -242,7 +236,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
             }
         }
         System.out.println();
-        scanner.close();
+        
     }
 
     private static void graphCall(int choice) {
@@ -272,11 +266,11 @@ public class Properties_of_Facebook_Gemsec_Graph {
         return true;
     }
 
-    private  static  void GenerateRank(int graphChoice) {
+    private static void GenerateRank(int graphChoice) {
         String filename = "";
-        if(graphChoice == 1) {
+        if (graphChoice == 1) {
             filename = "src/Sub_Project_02/Datasets/01_Government.txt";
-        } else if(graphChoice == 2) {
+        } else if (graphChoice == 2) {
             filename = "src/Sub_Project_02/Datasets/02_Politicians.txt";
         } else if (graphChoice == 3) {
             filename = "src/Sub_Project_02/Datasets/03_Public_figure.txt";
@@ -285,13 +279,14 @@ public class Properties_of_Facebook_Gemsec_Graph {
             return;
         }
         PageRank pageRank = new PageRank(filename);
-        PageRank.Run(filename);
+        pageRank.Run(filename);
     }
-    private  static void DetectCommunity(int graphChoice) {
+
+    private static void DetectCommunity(int graphChoice) {
         String filename = "";
-        if(graphChoice == 1) {
+        if (graphChoice == 1) {
             filename = "src/Sub_Project_02/Datasets/01_Government.txt";
-        } else if(graphChoice == 2) {
+        } else if (graphChoice == 2) {
             filename = "src/Sub_Project_02/Datasets/02_Politicians.txt";
         } else if (graphChoice == 3) {
             filename = "src/Sub_Project_02/Datasets/03_Public_figure.txt";
@@ -303,4 +298,3 @@ public class Properties_of_Facebook_Gemsec_Graph {
         cd.Run(filename);
     }
 }
-
