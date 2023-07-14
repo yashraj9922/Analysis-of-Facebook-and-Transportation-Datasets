@@ -58,7 +58,7 @@ public class Properties_of_mid_sem_graph {
                 System.out.println("3.Exit");
                 int shortestPathAlgorithmChoice = scanner.nextInt();
                 if (shortestPathAlgorithmChoice == 3) exitProgram();
-                ShortestDistance(shortestPathAlgorithmChoice);
+                calculateShortestDistance(shortestPathAlgorithmChoice);
             } else if (operationChoice == 3) {
                 Scanner sc = new Scanner(System.in);
                 System.out.print("Enter source: ");
@@ -74,7 +74,7 @@ public class Properties_of_mid_sem_graph {
                     continue;
                 }
                 ShortestDistance(src, dest);
-                sc.close();
+//                sc.close();
             } else if (operationChoice == 4) {
                 scanner.close();
                 exitProgram();
@@ -219,7 +219,7 @@ public class Properties_of_mid_sem_graph {
             }
         }
         System.out.println();
-        scanner.close();
+//        scanner.close();
     }
 
     private static void ShortestDistance(int shortestPathAlgorithmChoice) {
@@ -296,7 +296,46 @@ public class Properties_of_mid_sem_graph {
         System.out.printf("Average cost of travelling from %d to %d is %.2f\n",src, dest, avg);
         System.out.printf("Median cost of travelling from %d to %d is %.2f\n",src, dest, median);
         System.out.printf("Max cost of travelling from %d to %d is %.2f by %s\n",src, dest, max, maxWay);
+        if (maxWay.equals("Roadways")) {
+            System.out.println("Path taken (Roadways):");
+            for (Edge e : sd1.pathTo(dest)) {
+                System.out.print(e + " ");
+            }
+            System.out.println();
+        } else if (maxWay.equals("Railways")) {
+            System.out.println("Path taken (Railways):");
+            for (Edge e : sd2.pathTo(dest)) {
+                System.out.print(e + " ");
+            }
+            System.out.println();
+        } else {
+            System.out.println("Path taken (Subways):");
+            for (Edge e : sd3.pathTo(dest)) {
+                System.out.print(e + " ");
+            }
+            System.out.println();
+        }
         System.out.printf("Min cost of travelling from %d to %d is %.2f by %s\n",src, dest, min, minWay);
+        if (minWay.equals("Roadways")) {
+            System.out.println("Path taken (Roadways):");
+            for (Edge e : sd1.pathTo(dest)) {
+                System.out.print(e + " ");
+            }
+            System.out.println();
+        } else if (minWay.equals("Railways")) {
+            System.out.println("Path taken (Railways):");
+            for (Edge e : sd2.pathTo(dest)) {
+                System.out.print(e + " ");
+            }
+            System.out.println();
+        } else {
+            System.out.println("Path taken (Subways):");
+            for (Edge e : sd3.pathTo(dest)) {
+                System.out.print(e + " ");
+            }
+            System.out.println();
+        }
         System.out.println();
+
     }
 }
