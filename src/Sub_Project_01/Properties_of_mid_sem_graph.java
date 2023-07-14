@@ -6,20 +6,23 @@ import edu.princeton.cs.algs4.*;
 public class Properties_of_mid_sem_graph {
     static EdgeWeightedGraph G1, G2, G3;
     static EdgeWeightedDigraph DG1, DG2, DG3;
+    static String filename1 = "src/Sub_Project_01/Graph_01.txt";
+    static String filename2 = "src/Sub_Project_01/Graph_02.txt";
+    static String filename3 = "src/Sub_Project_01/Graph_03.txt";
 
     public static void ReadEdgeWeightGraph() {
-        In in1 = new In("src/Sub_Project_01/Graph_01.txt");
-        In in2 = new In("src/Sub_Project_01/Graph_02.txt");
-        In in3 = new In("src/Sub_Project_01/Graph_03.txt");
+        In in1 = new In(filename1);
+        In in2 = new In(filename2);
+        In in3 = new In(filename3);
         G1 = new EdgeWeightedGraph(in1);
         G2 = new EdgeWeightedGraph(in2);
         G3 = new EdgeWeightedGraph(in3);
     }
 
     public static void ReadEdgeWeightDigraph() {
-        In in1 = new In("src/Sub_Project_01/Graph_01.txt");
-        In in2 = new In("src/Sub_Project_01/Graph_02.txt");
-        In in3 = new In("src/Sub_Project_01/Graph_03.txt");
+        In in1 = new In(filename1);
+        In in2 = new In(filename2);
+        In in3 = new In(filename3);
         DG1 = new EdgeWeightedDigraph(in1);
         DG2 = new EdgeWeightedDigraph(in2);
         DG3 = new EdgeWeightedDigraph(in3);
@@ -47,19 +50,13 @@ public class Properties_of_mid_sem_graph {
             operationChoice = scanner.nextInt();
             System.out.println();
             if (operationChoice == 1) {
-                System.out.println("Enter the MST algorithm:");
-                System.out.println("1.Prim");
-                System.out.println("2.Kruskal");
-                System.out.println("3.Exit");
+                System.out.println("Enter the MST algorithm:\n1.Prim\n2.Kruskal\n3.Exit");
                 int mstAlgorithmChoice = scanner.nextInt();
                 if (mstAlgorithmChoice == 3)
                     exitProgram();
                 calculateMST(mstAlgorithmChoice);
             } else if (operationChoice == 2) {
-                System.out.println("Enter the shortest path algorithm:");
-                System.out.println("1.BellmanFord");
-                System.out.println("2.Dijkstra");
-                System.out.println("3.Exit");
+                System.out.println("Enter the shortest path algorithm:\n1.BellmanFord\n2.Dijkstra\n3.Exit");
                 int shortestPathAlgorithmChoice = scanner.nextInt();
                 if (shortestPathAlgorithmChoice == 3)
                     exitProgram();
@@ -130,11 +127,7 @@ public class Properties_of_mid_sem_graph {
         if (shortestPathAlgorithmChoice == 1) {
 
             System.out.println("Properties of combined Distance is ->");
-            System.out.println("Choose Graph:");
-            System.out.println("1.Graph_01");
-            System.out.println("2.Graph_02");
-            System.out.println("3.Graph_03");
-            System.out.println("4.Exit");
+            System.out.println("Choose Graph:\n1.Graph_01\n2.Graph_02\n3.Graph_03\n4.Exit");
             int choice = scanner.nextInt();
             System.out.println("Enter the source vertex (0-5 vertices)");
             int s = scanner.nextInt();
@@ -175,11 +168,7 @@ public class Properties_of_mid_sem_graph {
             }
             System.out.println();
         } else {
-            System.out.println("Choose Graph:");
-            System.out.println("1.Graph_01");
-            System.out.println("2.Graph_02");
-            System.out.println("3.Graph_03");
-            System.out.println("4.Exit");
+            System.out.println("Choose Graph:\n1.Graph_01\n2.Graph_02\n3.Graph_03\n4.Exit");
             int choice = scanner.nextInt();
             if (choice == 4) {
                 exitProgram();
@@ -354,6 +343,5 @@ public class Properties_of_mid_sem_graph {
             System.out.println();
         }
         System.out.println();
-
     }
 }
