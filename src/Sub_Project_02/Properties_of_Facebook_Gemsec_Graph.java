@@ -6,20 +6,22 @@ import edu.princeton.cs.algs4.*;
 public class Properties_of_Facebook_Gemsec_Graph {
     static EdgeWeightedGraph G1, G2, G3;
     static EdgeWeightedDigraph DG1, DG2, DG3;
-
+    static String filename1 = "src/Sub_Project_02/Datasets/01_Government.txt";
+    static String filename2 = "src/Sub_Project_02/Datasets/02_Politicians.txt";
+    static String filename3 = "src/Sub_Project_02/Datasets/03_Public_figure.txt";
     public static void ReadEdgeWeightGraph() {
-        In in1 = new In("src/Sub_Project_02/Datasets/01_Government.txt");
-        In in2 = new In("src/Sub_Project_02/Datasets/02_Politicians.txt");
-        In in3 = new In("src/Sub_Project_02/Datasets/03_Public_figure.txt");
+        In in1 = new In(filename1);
+        In in2 = new In(filename2);
+        In in3 = new In(filename3);
         G1 = new EdgeWeightedGraph(in1);
         G2 = new EdgeWeightedGraph(in2);
         G3 = new EdgeWeightedGraph(in3);
     }
 
     public static void ReadEdgeWeightDigraph() {
-        In in1 = new In("src/Sub_Project_02/Datasets/01_Government.txt");
-        In in2 = new In("src/Sub_Project_02/Datasets/02_Politicians.txt");
-        In in3 = new In("src/Sub_Project_02/Datasets/03_Public_figure.txt");
+        In in1 = new In(filename1);
+        In in2 = new In(filename2);
+        In in3 = new In(filename3);
         DG1 = new EdgeWeightedDigraph(in1);
         DG2 = new EdgeWeightedDigraph(in2);
         DG3 = new EdgeWeightedDigraph(in3);
@@ -48,33 +50,22 @@ public class Properties_of_Facebook_Gemsec_Graph {
             operationChoice = obj.nextInt();
             System.out.println();
             if (operationChoice == 1) {
-                System.out.println("Choose the MST algorithm:");
-                System.out.println("1.Prim");
-                System.out.println("2.Kruskal");
-                System.out.println("3.Exit");
+                System.out.println("Choose the MST algorithm:\n1.Prim\n2.Kruskal\n3.Exit");
                 int mstAlgorithmChoice = obj.nextInt();
                 if (mstAlgorithmChoice == 3)
                     exitProgram();
                 calculateMST(mstAlgorithmChoice);
             } else if (operationChoice == 2) {
-                System.out.println("Choose the shortest path algorithm:");
-                System.out.println("1.BellmanFord");
-                System.out.println("2.Dijkstra");
-                System.out.println("3.Exit");
+                System.out.println("Choose the shortest path algorithm:\n1.BellmanFord\n2.Dijkstra\n3.Exit");
                 int shortestPathAlgorithmChoice = obj.nextInt();
                 if (shortestPathAlgorithmChoice == 3)
                     exitProgram();
                 calculateShortestDistance(shortestPathAlgorithmChoice);
             } else if (operationChoice == 3) {
-                System.out.println("Choose Graph:");
-                System.out.println("1.Government");
-                System.out.println("2.Politicians");
-                System.out.println("3.Public_Figure");
-                System.out.println("4.Exit");
+                System.out.println("Choose Graph:\n1.Government\n2.Politicians\n3.Public_Figures\n4.Exit");
                 int graphChoice = obj.nextInt();
                 if (graphChoice == 4) {
-                    System.out.println("Exiting program....");
-                    System.exit(0);
+                    exitProgram();
                 } else if (graphChoice < 1 || graphChoice > 4) {
                     System.out.println("Invalid input!!!");
                     continue;
@@ -82,27 +73,20 @@ public class Properties_of_Facebook_Gemsec_Graph {
                 GenerateRank(graphChoice);
 
             } else if (operationChoice == 4) {
-                System.out.println("Choose Graph:");
-                System.out.println("1.Government");
-                System.out.println("2.Politicians");
-                System.out.println("3.Public_Figure");
-                System.out.println("4.Exit");
+                System.out.println("Choose Graph:\n1.Government\n2.Politicians\n3.Public_Figures\n4.Exit");
                 int graphChoice = obj.nextInt();
                 if (graphChoice == 4) {
-                    System.out.println("Exiting program....");
-                    System.exit(0);
+                    exitProgram();
                 } else if (graphChoice < 1 || graphChoice > 4) {
                     System.out.println("Invalid input!!!");
                     continue;
                 }
                 DetectCommunity(graphChoice);
             } else if (operationChoice == 5) {
-
                 exitProgram();
             } else {
                 System.out.println("Invalid operation choice.");
             }
-
         }
     }
 
@@ -148,17 +132,12 @@ public class Properties_of_Facebook_Gemsec_Graph {
         Scanner scanner = new Scanner(System.in);
         if (shortestPathAlgorithmChoice == 1) {
             // System.out.println("Properties of combined Distance is ->");
-            System.out.println("Choose Graph:");
-            System.out.println("1.Government");
-            System.out.println("2.Politicians");
-            System.out.println("3.Public_Figure");
-            System.out.println("4.Exit");
+            System.out.println("Choose Graph:\n1.Government\n2.Politicians\n3.Public_Figures\n4.Exit");
             int choice = scanner.nextInt();
             graphCall(choice);
             int s = scanner.nextInt();
             if (!validateSourceVertex(choice, s)) {
                 System.out.println("Invalid vertex entered!!!");
-
                 return;
             }
 
@@ -178,7 +157,6 @@ public class Properties_of_Facebook_Gemsec_Graph {
                 for (DirectedEdge e : sp1.negativeCycle())
                     StdOut.println(e);
             }
-
             // print shortest paths
             else {
                 for (int v = 0; v < G.V(); v++) {
@@ -195,14 +173,9 @@ public class Properties_of_Facebook_Gemsec_Graph {
             }
             System.out.println();
         } else {
-            System.out.println("Choose Graph:");
-            System.out.println("1.Government");
-            System.out.println("2.Politicians");
-            System.out.println("3.Public_Figure");
-            System.out.println("4.Exit");
+            System.out.println("Choose Graph:\n1.Government\n2.Politicians\n3.Public_Figures\n4.Exit");
             int choice = scanner.nextInt();
             graphCall(choice);
-
             if (choice == 4) {
                 exitProgram();
             }
@@ -217,10 +190,8 @@ public class Properties_of_Facebook_Gemsec_Graph {
                 exitProgram();
             }
             int s = scanner.nextInt();
-
             if (!validateSourceVertex(choice, s)) {
                 System.out.println("Invalid vertex entered!!!");
-
                 return;
             }
             DijkstraUndirectedSP sp1 = new DijkstraUndirectedSP(EWG, s);
@@ -237,7 +208,6 @@ public class Properties_of_Facebook_Gemsec_Graph {
             }
         }
         System.out.println();
-
     }
 
     private static void graphCall(int choice) {
@@ -286,11 +256,11 @@ public class Properties_of_Facebook_Gemsec_Graph {
     private static void DetectCommunity(int graphChoice) {
         String filename = "";
         if (graphChoice == 1) {
-            filename = "src/Sub_Project_02/Datasets/01_Government.txt";
+            filename = filename1;
         } else if (graphChoice == 2) {
-            filename = "src/Sub_Project_02/Datasets/02_Politicians.txt";
+            filename = filename2;
         } else if (graphChoice == 3) {
-            filename = "src/Sub_Project_02/Datasets/03_Public_figure.txt";
+            filename = filename3;
         } else {
             System.out.println("Invalid choice !!!");
             return;
