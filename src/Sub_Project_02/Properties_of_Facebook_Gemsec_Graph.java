@@ -99,7 +99,6 @@ public class Properties_of_Facebook_Gemsec_Graph {
                     continue;
                 }
                 DetectCommunity(graphChoice);
-                sc.close();
             } else if (operationChoice == 5) {
                 obj.close();
                 exitProgram();
