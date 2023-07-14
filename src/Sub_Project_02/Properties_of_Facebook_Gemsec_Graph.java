@@ -161,7 +161,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
 
                 return;
             }
-            BellmanFordSP sp1 = new BellmanFordSP(DG1, s);
+
             EdgeWeightedDigraph G = null;
             if (choice == 1) {
                 G = DG1;
@@ -172,6 +172,7 @@ public class Properties_of_Facebook_Gemsec_Graph {
             } else {
                 exitProgram();
             }
+            BellmanFordSP sp1 = new BellmanFordSP(G, s);
             // print negative cycle
             if (sp1.hasNegativeCycle()) {
                 for (DirectedEdge e : sp1.negativeCycle())
