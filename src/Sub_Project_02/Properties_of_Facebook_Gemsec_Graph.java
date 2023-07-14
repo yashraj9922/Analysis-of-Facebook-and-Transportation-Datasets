@@ -13,7 +13,6 @@ public class Properties_of_Facebook_Gemsec_Graph {
         G1 = new EdgeWeightedGraph(in1);
         G2 = new EdgeWeightedGraph(in2);
         G3 = new EdgeWeightedGraph(in3);
-
     }
     public static void ReadEdgeWeightDigraph() {
         In in1 = new In("src/Sub_Project_02/Datasets/01_Government.txt");
