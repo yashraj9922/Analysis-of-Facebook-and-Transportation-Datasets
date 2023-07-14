@@ -66,7 +66,9 @@ public class Properties_of_mid_sem_graph {
                 System.out.println("Enter Destination: ");
                 int dest = sc.nextInt();
                 ShortestDistance(src, dest);
+                sc.close();
             } else if (operationChoice == 4) {
+                scanner.close();
                 exitProgram();
             } else {
                 System.out.println("Invalid operation choice.");
@@ -126,6 +128,7 @@ public class Properties_of_mid_sem_graph {
             int s = scanner.nextInt();
             if(s>5){
                 System.out.println("Invalid vertex entered!!!");
+                scanner.close();
                 return;
             }
             BellmanFordSP sp1 = new BellmanFordSP(DG1,s);
@@ -188,6 +191,7 @@ public class Properties_of_mid_sem_graph {
             int s = scanner.nextInt();
             if(s>5){
                 System.out.println("Invalid vertex entered!!!");
+                scanner.close();
                 return;
             }
             DijkstraUndirectedSP sp1 = new DijkstraUndirectedSP(G1,s);
@@ -207,6 +211,7 @@ public class Properties_of_mid_sem_graph {
             }
         }
         System.out.println();
+        scanner.close();
     }
 
     private static void ShortestDistance(int shortestPathAlgorithmChoice) {
@@ -238,6 +243,7 @@ public class Properties_of_mid_sem_graph {
             int dest = scanner.nextInt();
             if (src > 5 || dest > 5) {
                 System.out.println("Invalid vertex entered!!!");
+                scanner.close();
                 return;
             }
             BellmanFordSP sp = new BellmanFordSP(G, src);
@@ -257,6 +263,7 @@ public class Properties_of_mid_sem_graph {
             // Rest of the code for Dijkstra's algorithm
         }
         System.out.println();
+        scanner.close();
     }
     private static  void ShortestDistance(int src, int dest) {
         DijkstraUndirectedSP sd1 = new DijkstraUndirectedSP(G1,src);
