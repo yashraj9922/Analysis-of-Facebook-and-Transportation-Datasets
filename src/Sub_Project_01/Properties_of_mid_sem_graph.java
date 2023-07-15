@@ -281,7 +281,9 @@ public class Properties_of_mid_sem_graph {
             maxWay = "Railways";
         else
             maxWay = "Subways";
+        System.out.println("*************************************************************************");
         System.out.printf("Average cost of travelling from %d to %d is %.2f\n", src, dest, avg);
+        System.out.println("*************************************************************************");
         System.out.printf("Median cost of travelling from %d to %d is %.2f\n", src, dest, median);
         if (median == first) {
             System.out.println("Path taken (Roadways):");
@@ -302,6 +304,7 @@ public class Properties_of_mid_sem_graph {
             }
             System.out.println();
         }
+        System.out.println("*************************************************************************");
         System.out.printf("Max cost of travelling from %d to %d is %.2f by %s\n", src, dest, max, maxWay);
         if (maxWay.equals("Roadways")) {
             System.out.println("Path taken (Roadways):");
@@ -322,6 +325,7 @@ public class Properties_of_mid_sem_graph {
             }
             System.out.println();
         }
+        System.out.println("*************************************************************************");
         System.out.printf("Min cost of travelling from %d to %d is %.2f by %s\n", src, dest, min, minWay);
         if (minWay.equals("Roadways")) {
             System.out.println("Path taken (Roadways):");
@@ -342,6 +346,7 @@ public class Properties_of_mid_sem_graph {
             }
             System.out.println();
         }
+        System.out.println("*************************************************************************");
         System.out.println();
     }
 }
