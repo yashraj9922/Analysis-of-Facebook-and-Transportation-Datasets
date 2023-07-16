@@ -6,9 +6,9 @@ import edu.princeton.cs.algs4.*;
 public class Properties_of_mid_sem_graph {
     static EdgeWeightedGraph G1, G2, G3;
     static EdgeWeightedDigraph DG1, DG2, DG3;
-    static String filename1 = "src/Sub_Project_01/Graph_01.txt";
-    static String filename2 = "src/Sub_Project_01/Graph_02.txt";
-    static String filename3 = "src/Sub_Project_01/Graph_03.txt";
+    static String filename1 = "src/Sub_Project_01/Datasets/Graph_01.txt";
+    static String filename2 = "src/Sub_Project_01/Datasets/Graph_02.txt";
+    static String filename3 = "src/Sub_Project_01/Datasets/Graph_03.txt";
 
     public static void ReadEdgeWeightGraph() {
         In in1 = new In(filename1);
@@ -281,7 +281,9 @@ public class Properties_of_mid_sem_graph {
             maxWay = "Railways";
         else
             maxWay = "Subways";
+        System.out.println("*************************************************************************");
         System.out.printf("Average cost of travelling from %d to %d is %.2f\n", src, dest, avg);
+        System.out.println("*************************************************************************");
         System.out.printf("Median cost of travelling from %d to %d is %.2f\n", src, dest, median);
         if (median == first) {
             System.out.println("Path taken (Roadways):");
@@ -302,6 +304,7 @@ public class Properties_of_mid_sem_graph {
             }
             System.out.println();
         }
+        System.out.println("*************************************************************************");
         System.out.printf("Max cost of travelling from %d to %d is %.2f by %s\n", src, dest, max, maxWay);
         if (maxWay.equals("Roadways")) {
             System.out.println("Path taken (Roadways):");
@@ -322,6 +325,7 @@ public class Properties_of_mid_sem_graph {
             }
             System.out.println();
         }
+        System.out.println("*************************************************************************");
         System.out.printf("Min cost of travelling from %d to %d is %.2f by %s\n", src, dest, min, minWay);
         if (minWay.equals("Roadways")) {
             System.out.println("Path taken (Roadways):");
@@ -342,6 +346,7 @@ public class Properties_of_mid_sem_graph {
             }
             System.out.println();
         }
+        System.out.println("*************************************************************************");
         System.out.println();
     }
 }
