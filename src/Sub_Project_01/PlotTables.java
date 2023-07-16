@@ -6,9 +6,9 @@ import edu.princeton.cs.algs4.In;
 
 public class PlotTables {
     public static void main(String[] args) {
-        In in1 = new In("Graph_01.txt");
-        In in2 = new In("Graph_02.txt");
-        In in3 = new In("Graph_03.txt");
+        In in1 = new In("src/Sub_Project_01/Datasets/Graph_01.txt");
+        In in2 = new In("src/Sub_Project_01/Datasets/Graph_02.txt");
+        In in3 = new In("src/Sub_Project_01/Datasets/Graph_03.txt");
         EdgeWeightedGraph g1 = new EdgeWeightedGraph(in1);
         EdgeWeightedGraph g2 = new EdgeWeightedGraph(in2);
         EdgeWeightedGraph g3 = new EdgeWeightedGraph(in3);
