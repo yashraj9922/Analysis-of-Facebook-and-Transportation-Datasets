@@ -6,9 +6,9 @@ import edu.princeton.cs.algs4.*;
 public class Properties_of_Facebook_Gemsec_Graph {
     static EdgeWeightedGraph G1, G2, G3;
     static EdgeWeightedDigraph DG1, DG2, DG3;
-    static String filename1 = "src/Sub_Project_02/Datasets/01_Government.txt";
-    static String filename2 = "src/Sub_Project_02/Datasets/02_Politicians.txt";
-    static String filename3 = "src/Sub_Project_02/Datasets/03_Public_figure.txt";
+    static String filename1 = "src/Sub_Project_02/01_Government.txt";
+    static String filename2 = "src/Sub_Project_02/02_Politicians.txt";
+    static String filename3 = "src/Sub_Project_02/03_Public_figure.txt";
 
     public static void ReadEdgeWeightGraph() {
         In in1 = new In(filename1);
