@@ -101,10 +101,13 @@ public class CommunityDetection {
 
         // Print the detected communities
         int counter = 0;
+        long size = 0;
         for (int i = 0; i < communities.size(); i++) {
             if(communities.get(i).isEmpty()) continue;
             System.out.println("Community " + (++counter) + ": " + communities.get(i));
+            size = Math.max(communities.get(i).size(), size);
         }
+        System.out.println("Size of the largest community is " + size);
     }
 }
 
