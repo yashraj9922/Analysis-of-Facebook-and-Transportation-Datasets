@@ -27,6 +27,9 @@ public class PlotTables {
             avg_closeness_centrality1 += 1.0f/avg1;
         }
         avg_closeness_centrality1 /= 1.0f*g1.V();
+
+
+
         for(int i = 0 ; i < g2.V(); i++) {
             float sum2=0.0f,avg2;
             DijkstraUndirectedSP d2 = new DijkstraUndirectedSP(g2,i);
@@ -38,7 +41,9 @@ public class PlotTables {
             avg2=sum2/(g2.V() * 1.0f);
             avg_closeness_centrality2 += 1.0f/avg2;
         }
-        avg_closeness_centrality2 /= 1.0f * g3.V();
+        avg_closeness_centrality2 /= 1.0f * g2.V();
+
+
         for(int i = 0 ; i < g3.V(); i++) {
             float sum3=0.0f,avg3;
             DijkstraUndirectedSP d3 = new DijkstraUndirectedSP(g3,i);
@@ -54,12 +59,6 @@ public class PlotTables {
         float avg_avg = (avg_closeness_centrality1 + avg_closeness_centrality2 + avg_closeness_centrality3) / 3.0f;
         float minimum = Math.min(avg_closeness_centrality3,Math.min(avg_closeness_centrality1,avg_closeness_centrality2));
         float maximum = Math.max(avg_closeness_centrality3,Math.max(avg_closeness_centrality1,avg_closeness_centrality2));
-//        if(ch == avg_closeness_centrality1)
-//            System.out.println("Trains are more centralized and most easily connect all places");
-//        if(ch == avg_closeness_centrality2)
-//            System.out.println("Roadways are more centralized and most easily connect all places");
-//        if(ch == avg_closeness_centrality3)
-//            System.out.println("Subways are more centralized and most easily connect all places");
         System.out.println("Average of all : " + avg_avg);
         System.out.println("Min of all : " + minimum);
         System.out.println("Max of all: " + maximum);
